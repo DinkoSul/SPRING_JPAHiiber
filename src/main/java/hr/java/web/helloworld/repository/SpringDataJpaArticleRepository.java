@@ -12,5 +12,7 @@ import java.util.List;
 @Repository
 public interface SpringDataJpaArticleRepository
         extends JpaRepository<Article, Integer>, JpaSpecificationExecutor<Article> {
+
     List<Article> findByName(String name);
+//    getAllArticles()
 }

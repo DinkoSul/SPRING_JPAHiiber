@@ -1,0 +1,27 @@
+GET:
+http://localhost:8083/web-shop
+http://localhost:8083/web-shop/Tesla Model Y
+
+POST:
+http://localhost:8083/web-shop/new
+{
+  "articleName": "BMW",
+  "articleDescription": "Electric car",
+  "articlePrice": 50000,
+  "categoryName": "Cars and motorcycles"
+}
+
+PUT:
+http://localhost:8083/web-shop/article/1
+{
+  "articleName": "Tesla Model ZZ",
+  "articleDescription": "Electric car",
+  "articlePrice": 60000,
+  "categoryName": "Cars and motorcycles"
+}
+
+
+DELETE:
+http://localhost:8083/web-shop/article/1
+
+

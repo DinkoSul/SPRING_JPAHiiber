@@ -27,6 +27,11 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.getArticlesByName(articleName).stream().toList());
     }
 
+//    @GetMapping("/desc/{articleName}")
+//    public ResponseEntity<List<ArticleDTO>> filterArticlesByDescription(@PathVariable String articleName) {
+//        return ResponseEntity.ok(articleService.getArticlesByDescription(articleName).stream().toList());
+//    }
+
     @PostMapping("/new")
     public ResponseEntity<?> saveNewArticle(@Valid @RequestBody ArticleDTO articleDTO) {
         ArticleDTO savedArticleDTO = articleService.saveNewArticle(articleDTO);

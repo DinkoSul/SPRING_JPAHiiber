@@ -21,4 +21,5 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
+
 }

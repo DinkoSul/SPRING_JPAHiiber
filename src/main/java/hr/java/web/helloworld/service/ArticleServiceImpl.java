@@ -160,15 +160,31 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     private Article convertArticleDtoToArticle(ArticleDTO articleDTO) {
-        Integer latestId =
-                articleRepository.findAll().stream()
-                        .max((a1, a2) -> a1.getId().compareTo(a2.getId()))
-                        .get().getId();
 
-        return new Article(latestId + 1, articleDTO.getArticleName(),
-                articleDTO.getArticleDescription(), articleDTO.getArticlePrice(),
-                categoryRepository.findByName(articleDTO.getCategoryName()));
+        Article article = new Article();
+        article.setName(articleDTO.getArticleName());
+        article.setDescription(articleDTO.getArticleDescription());
+        article.setPrice(articleDTO.getArticlePrice());
+        Category category = categoryRepository.findByName(articleDTO.getCategoryName());
+        if (category == null) {
+            throw new IllegalArgumentException("Category with name '" + articleDTO.getCategoryName() + "' not found.");
+
+        }
+        article.setCategory(category);
+        return article;
+
+        //        Integer latestId =
+//                articleRepository.findAll().stream()
+//                        .max((a1, a2) -> a1.getId().compareTo(a2.getId()))
+//                        .get().getId();
+//
+//        return new Article(latestId + 1, articleDTO.getArticleName(),
+//                articleDTO.getArticleDescription(), articleDTO.getArticlePrice(),
+//                categoryRepository.findByName(articleDTO.getCategoryName()));
+        //        return article;
     }
+
+
 
     private SearchArticle convertSearchArticleDtoToSearchArticle(SearchArticleDTO searchArticleDTO) {
         return new SearchArticle(
